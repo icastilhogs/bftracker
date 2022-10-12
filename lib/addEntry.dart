@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-final String entriesTable = 'entries';
+const String entriesTable = 'entries';
 
 class EntryFields {
   static const String id = '_id';
@@ -29,6 +29,7 @@ enum Trackers {
 
   //activities
   cardio('Cardio activities'),
+  hitt('HIIT training'),
   rT('Resistance training'),
 
   //anotations
@@ -42,13 +43,15 @@ enum Trackers {
 class Tracker {
   Tracker({
     required this.type,
-    this.timestamp,
+    required this.date,
+    required this.timestamp,
     this.value,
     this.controller,
   });
 
   final Trackers type;
   final DateTime? timestamp;
+  final DateTime? date;
   double? value;
   final TextEditingController? controller;
 }
@@ -66,7 +69,10 @@ class AddEntry extends HookWidget {
     void _generateInputs() {
       for (int i = 0; i < Trackers.values.length; i++) {
         inputs.add(Tracker(
-            type: Trackers.values[i], controller: useTextEditingController()));
+            type: Trackers.values[i],
+            controller: useTextEditingController(),
+            date: DateTime.now(),
+            timestamp: DateTime.now()));
       }
     }
 

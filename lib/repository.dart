@@ -1,4 +1,4 @@
-import 'package:bftracker/addEntry.dart';
+/* import 'package:bftracker/addEntry.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
 
@@ -40,7 +40,7 @@ class TrackersRepository extends ChangeNotifier {
 class TrackerHiveAdapter extends TypeAdapter<Tracker> {
   @override
   Tracker read(BinaryReader reader) {
-    return Tracker(type: Trackers.values[reader.readInt()]);
+    return Tracker(type: Trackers.values[reader.readInt()], date: null, timestamp: null, );
   }
 
   @override
@@ -51,3 +51,4 @@ class TrackerHiveAdapter extends TypeAdapter<Tracker> {
     writer.writeInt(obj.type.index);
   }
 }
+ */
